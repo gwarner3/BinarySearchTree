@@ -18,12 +18,14 @@ namespace BinarySearchTree
         }
         public static int GetNodeToAdd()
         {
+            Console.Clear();
             Console.WriteLine("Key in the item to add and press enter?");
             userResponse = Convert.ToInt32(Console.ReadLine());
             return userResponse;
         }
         public static int GetSearchResponse()
         {
+            Console.Clear();
             Console.WriteLine("Key in the item you want to find and press enter?");
             userResponse = Convert.ToInt32(Console.ReadLine());
             return userResponse;

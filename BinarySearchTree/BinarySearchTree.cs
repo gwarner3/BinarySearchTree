@@ -9,7 +9,10 @@ namespace BinarySearchTree
     public class BinarySearchTree
     {
         private Node root;
+        private Node leftChild;
+        private Node rightChild;
         private int userResponse;
+        private bool keepGoing = true;
 
         public BinarySearchTree()
         {
@@ -17,7 +20,6 @@ namespace BinarySearchTree
         }
         public void RunOptionSelected(int optionSelected)
         {
-            //Console.Clear();            
             switch (optionSelected)
             {
                 case 1:
@@ -37,9 +39,37 @@ namespace BinarySearchTree
         private void AddNodes()
         {
             userResponse = UserMenu.GetNodeToAdd();
-            //code to add node
-
+            if (root == null)
+            {
+                root = new Node(userResponse);
+                return;
+            }
+            
+            
+            if (root.leftLink == null && root.info < userResponse)
+            {
+                leftChild = new Node(userResponse);
+                root.leftLink = leftChild;
+            }
+            else if (root.leftLink == null && root.info > userResponse)
+            {
+                rightChild = new Node(userResponse);
+                root.rightLink = rightChild;
+            }
+            //UserMenu.SelectionMenu();            
         }
+        
+            //else if (userResponse > root.info)
+            //{
+            //    Node newNode = new Node(userResponse);
+            //    root.rightLink = root;
+            //}
+            //else if (userResponse < root.info)
+            //{
+            //    Node temp = new Node(userResponse);
+            //    root.leftLink = temp;
+            //}
+        //}
         private void SearchNodes()
         {
             userResponse = UserMenu.GetSearchResponse();
@@ -47,8 +77,12 @@ namespace BinarySearchTree
         }
         public void StartTree()
         {
-            userResponse = UserMenu.SelectionMenu();
-            RunOptionSelected(userResponse);
+            
+            while (keepGoing)
+            {
+                userResponse = UserMenu.SelectionMenu();
+                RunOptionSelected(userResponse);                
+            }
             Console.ReadLine();
 
         }
