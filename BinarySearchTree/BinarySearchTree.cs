@@ -9,36 +9,47 @@ namespace BinarySearchTree
     public class BinarySearchTree
     {
         private Node root;
-        private string userResponse;
+        private int userResponse;
 
         public BinarySearchTree()
         {
             root = null;
         }
-        public void SelectionMenu()
+        public void RunOptionSelected(int optionSelected)
         {
-            Console.Clear();
-            Console.WriteLine("Key in number for what operation you ant to perform and press Enter.\n1. Add\n2. Search\n3. Exit application");
-            userResponse = Console.ReadLine();
-            switch (userResponse)
+            //Console.Clear();            
+            switch (optionSelected)
             {
-                case "1":
+                case 1:
                     AddNodes();
                     break;
-                case "2":
+                case 2:
                     SearchNodes();
                     break;
-                case "3":                    
-                    Environment.Exit(1);
+                case 3:
+                    Environment.Exit(0);
                     break;
-            }            
+                default:
+                    UserMenu.SelectionMenu();
+                    break;
+            }
         }
-        public void AddNodes()
+        private void AddNodes()
         {
+            userResponse = UserMenu.GetNodeToAdd();
+            //code to add node
 
         }
-        public void SearchNodes()
+        private void SearchNodes()
         {
+            userResponse = UserMenu.GetSearchResponse();
+            //code to search nodes
+        }
+        public void StartTree()
+        {
+            userResponse = UserMenu.SelectionMenu();
+            RunOptionSelected(userResponse);
+            Console.ReadLine();
 
         }
     }
