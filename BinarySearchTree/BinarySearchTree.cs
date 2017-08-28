@@ -54,50 +54,18 @@ namespace BinarySearchTree
             }
             else if (addedNode.info < root.info)
             {
-                CheckLeftChild(addedNode);
+                Node tempRoot = root;
+                CheckLeftChild(tempRoot, addedNode);
             }
         }
-        private void CheckLeftChild(Node addedNode)
+        private void CheckLeftChild(Node tempRoot, Node addedNode)
         {
-            Node temp;
-            while (continueSearch)
-            {
-                if (root.leftChild == null)
-                {
-                    root.leftChild = addedNode;
-                    continueSearch = false;
-                }
-                else if (addedNode.info > root.leftChild.info)
-                {
-
-                }
-                else if (addedNode.info < root.leftChild.info)
-                {
-                    temp = root.leftChild;
-                    CheckLeftChild(temp);
-                    continueSearch = false;
-                }
-            }
         }
         private void FindNextLeftNode(Node leftChild, Node addedNode)
         {
-            Node temp = leftChild;
-            if (addedNode.info < leftChild.info)
-            {
-                temp.leftChild = addedNode;
-            }            
         }
         private void CheckRightChild(Node root)
         {
-            Node temp = root;
-            if (root.rightChild != null)
-            {
-                //something is on the right, move down a level
-            }
-            else
-            {
-                root.leftChild = new Node(userResponse);
-            }
         }
 
 
