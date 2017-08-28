@@ -9,8 +9,6 @@ namespace BinarySearchTree
     public class BinarySearchTree
     {
         private Node root;
-        private Node leftChild;
-        private Node rightChild;
         private int userResponse;
         private bool keepGoing = true;
 
@@ -29,9 +27,11 @@ namespace BinarySearchTree
                     SearchNodes();
                     break;
                 case 3:
-                    Environment.Exit(0);
+                    keepGoing = false;
                     break;
                 default:
+                    Console.WriteLine($"You typed {userResponse}. Please select 1, 2, or 3. Press ENTER to continue.");
+                    Console.ReadLine();
                     UserMenu.SelectionMenu();
                     break;
             }
@@ -39,41 +39,54 @@ namespace BinarySearchTree
         private void AddNodes()
         {
             userResponse = UserMenu.GetNodeToAdd();
+            Node addedNode = new Node(userResponse);
             if (root == null)
             {
-                root = new Node(userResponse);
-                return;
+                root = addedNode;
             }
-            
-            
-            if (root.leftLink == null && root.info < userResponse)
+            else if (addedNode.info > root.info)
             {
-                leftChild = new Node(userResponse);
-                root.leftLink = leftChild;
+                //does the current root have a right child
+                Console.ReadLine();
             }
-            else if (root.leftLink == null && root.info > userResponse)
+            else if (addedNode.info < root.info)
             {
-                rightChild = new Node(userResponse);
-                root.rightLink = rightChild;
+                //does the current root have a left child                
+                CheckLeftChild(root, addedNode);
             }
-            //UserMenu.SelectionMenu();            
         }
-        
-            //else if (userResponse > root.info)
-            //{
-            //    Node newNode = new Node(userResponse);
-            //    root.rightLink = root;
-            //}
-            //else if (userResponse < root.info)
-            //{
-            //    Node temp = new Node(userResponse);
-            //    root.leftLink = temp;
-            //}
-        //}
+        private void CheckLeftChild(Node root, Node addedNode)
+        {
+            if (root.leftChild == null)
+            {
+                root.leftChild = addedNode;
+            }
+            else
+            {
+                CheckRightChild(root);
+            }
+            {
+                root.leftChild = new Node(userResponse);
+            }
+        }
+
+        private void CheckRightChild(Node root)
+        {
+            Node temp = root;
+            if (root.rightChild != null)
+            {
+                //something is on the right, move down a level
+            }
+            else
+            {
+                root.leftChild = new Node(userResponse);
+            }
+        }
+
+
         private void SearchNodes()
         {
             userResponse = UserMenu.GetSearchResponse();
-            //code to search nodes
         }
         public void StartTree()
         {
