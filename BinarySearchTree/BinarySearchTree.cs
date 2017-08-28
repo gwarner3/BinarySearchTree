@@ -11,6 +11,7 @@ namespace BinarySearchTree
         private Node root;
         private int userResponse;
         private bool keepGoing = true;
+        private bool continueSearch;// = true;
 
         public BinarySearchTree()
         {
@@ -38,38 +39,54 @@ namespace BinarySearchTree
         }
         private void AddNodes()
         {
+            continueSearch = true;
             userResponse = UserMenu.GetNodeToAdd();
             Node addedNode = new Node(userResponse);
+
             if (root == null)
             {
                 root = addedNode;
             }
             else if (addedNode.info > root.info)
             {
-                //does the current root have a right child
+                //check if right node is empty
                 Console.ReadLine();
             }
             else if (addedNode.info < root.info)
             {
-                //does the current root have a left child                
-                CheckLeftChild(root, addedNode);
+                CheckLeftChild(addedNode);
             }
         }
-        private void CheckLeftChild(Node root, Node addedNode)
+        private void CheckLeftChild(Node addedNode)
         {
-            if (root.leftChild == null)
+            Node temp;
+            while (continueSearch)
             {
-                root.leftChild = addedNode;
-            }
-            else
-            {
-                CheckRightChild(root);
-            }
-            {
-                root.leftChild = new Node(userResponse);
+                if (root.leftChild == null)
+                {
+                    root.leftChild = addedNode;
+                    continueSearch = false;
+                }
+                else if (addedNode.info > root.leftChild.info)
+                {
+
+                }
+                else if (addedNode.info < root.leftChild.info)
+                {
+                    temp = root.leftChild;
+                    CheckLeftChild(temp);
+                    continueSearch = false;
+                }
             }
         }
-
+        private void FindNextLeftNode(Node leftChild, Node addedNode)
+        {
+            Node temp = leftChild;
+            if (addedNode.info < leftChild.info)
+            {
+                temp.leftChild = addedNode;
+            }            
+        }
         private void CheckRightChild(Node root)
         {
             Node temp = root;
