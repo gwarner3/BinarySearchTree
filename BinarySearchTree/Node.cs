@@ -11,12 +11,14 @@ namespace BinarySearchTree
         public int info;
         public Node leftLink;
         public Node rightLink;
+        public Node leftChild;
+        public Node rightChild;
 
         public Node(int info)
         {
             this.info = info;
-            leftLink = null;
-            rightLink = null;
-        }
+            leftChild = null;
+            rightChild = null;
+    }
     }
 }
