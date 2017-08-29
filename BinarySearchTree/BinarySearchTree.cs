@@ -75,15 +75,13 @@ namespace BinarySearchTree
             userResponse = UserMenu.GetSearchResponse();
         }
         public void StartTree()
-        {
-            
+        {            
             while (keepGoing)
             {
                 userResponse = UserMenu.SelectionMenu();
                 RunOptionSelected(userResponse);                
             }
-            Console.ReadLine();
-
+            Environment.Exit(0);
         }
     }
 }
