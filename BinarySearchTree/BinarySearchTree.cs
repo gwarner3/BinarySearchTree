@@ -11,7 +11,7 @@ namespace BinarySearchTree
         private Node root;
         private int userResponse;
         private bool keepGoing = true;
-        private bool continueSearch;// = true;
+        //private bool continueSearch;// = true;
 
         public BinarySearchTree()
         {
@@ -22,7 +22,7 @@ namespace BinarySearchTree
             switch (optionSelected)
             {
                 case 1:
-                    AddNodes();
+                    CheckRoot();
                     break;
                 case 2:
                     SearchNodes();
@@ -37,9 +37,9 @@ namespace BinarySearchTree
                     break;
             }
         }
-        private void AddNodes()
+        private void CheckRoot()
         {
-            continueSearch = true;
+            //continueSearch = true;
             userResponse = UserMenu.GetNodeToAdd();
             Node addedNode = new Node(userResponse);
 
@@ -47,78 +47,15 @@ namespace BinarySearchTree
             {
                 root = addedNode;
             }
-            else if (addedNode.info > root.info)
-            {
-                //check if right node is empty
-                Console.ReadLine();
-            }
-            else if (addedNode.info < root.info)
-            {
-                Node tempRoot = root;
-                CheckLeftChild(tempRoot, addedNode);
-            }
-        }
-        private void CheckLeftChild(Node tempRoot, Node addedNode)
-        {
-            //Node temp;
-            while (continueSearch)
-            {
-                if (tempRoot.leftChild == null)
-                {
-                    tempRoot.leftChild = addedNode;
-                    continueSearch = false;
-                }
-                else if (tempRoot.leftChild != null)
-                {
-                    tempRoot = tempRoot.leftChild;
-                    CheckLeftChild(tempRoot, addedNode);
-                }
-                //else if (root.leftChild == null)
-                //{
-                //    root.leftChild = addedNode;
-                //    continueSearch = false;
-                //}
-                //else if (tempRoot.info > root.leftChild.info)
-                //{
-                //    //check if it is also null
-                //}
-                //else if (tempRoot.info < root.leftChild.info)
-                //{
-                //    if (root.leftChild == null)
-                //    { 
-                //        temp = root.leftChild;
-                //        //CheckLeftChild(temp);
-                //        continueSearch = false;
-                //    }
-                //    else
-                //    {
-
-                //    }
-                //}
-            }
-        }
-        private void FindNextLeftNode(Node leftChild, Node addedNode)
-        {
-            Node temp = leftChild;
-            if (addedNode.info < leftChild.info)
-            {
-                temp.leftChild = addedNode;
-            }            
-        }
-        private void CheckRightChild(Node root)
-        {
-            Node temp = root;
-            if (root.rightChild != null)
-            {
-                //something is on the right, move down a level
-            }
             else
             {
-                root.leftChild = new Node(userResponse);
-            }
+                AddNode(root, addedNode);
+            }            
         }
+        private void AddNode(Node root, Node addedNode)
+        {
 
-
+        }
         private void SearchNodes()
         {
             userResponse = UserMenu.GetSearchResponse();
