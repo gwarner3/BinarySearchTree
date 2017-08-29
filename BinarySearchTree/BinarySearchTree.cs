@@ -54,7 +54,21 @@ namespace BinarySearchTree
         }
         private void AddNode(Node root, Node addedNode)
         {
-
+            if(addedNode.info > root.info)
+            {
+                //check rught node
+            }
+            else if(addedNode.info < root.info)
+            {
+                if (root.leftChild == null)
+                {
+                    root.leftChild = addedNode;
+                }
+                else
+                {
+                    AddNode(root.leftChild, addedNode);
+                }
+            }
         }
         private void SearchNodes()
         {
