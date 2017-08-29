@@ -33,7 +33,6 @@ namespace BinarySearchTree
         }
         private void CheckRoot()
         {
-            //continueSearch = true;
             userResponse = UserMenu.GetNodeToAdd();
             Node addedNode = new Node(userResponse);
 
@@ -50,7 +49,14 @@ namespace BinarySearchTree
         {
             if(addedNode.info > root.info)
             {
-                //check rught node
+                if (root.rightChild == null)
+                {
+                    root.rightChild = addedNode;
+                }
+                else
+                {
+                    AddNode(root.rightChild, addedNode);
+                }
             }
             else if(addedNode.info < root.info)
             {
