@@ -12,7 +12,7 @@ namespace BinarySearchTree
         public static int SelectionMenu()
         {
             Console.Clear();
-            Console.WriteLine("Key in number for what operation you ant to perform and press Enter.\n1. Add\n2. Search\n3. Exit application");
+            Console.WriteLine("Key in number for what operation you want to perform and press Enter.\n1. Add\n2. Search\n3. Exit application");
             try
             {
                 userResponse = Convert.ToInt32(Console.ReadLine());
@@ -32,6 +32,7 @@ namespace BinarySearchTree
             userResponse = Convert.ToInt32(Console.ReadLine());
             return userResponse;
         }
+
         public static int GetSearchResponse()
         {
             Console.Clear();

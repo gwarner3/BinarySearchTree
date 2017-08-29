@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BinarySearchTree
 {
@@ -11,7 +7,6 @@ namespace BinarySearchTree
         private Node root;
         private int userResponse;
         private bool keepGoing = true;
-        //private bool continueSearch;// = true;
 
         public BinarySearchTree()
         {
@@ -33,7 +28,6 @@ namespace BinarySearchTree
                 default:
                     Console.WriteLine($"You typed {userResponse}. Please select 1, 2, or 3. Press ENTER to continue.");
                     Console.ReadLine();
-                    UserMenu.SelectionMenu();
                     break;
             }
         }
